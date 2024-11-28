@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News App</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="script1.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container flex">
+                <div class="nav-search-bar">
+                    <div class="search-bar flex">
+                        <input type="text" class="news-input" id="search-text" placeholder="e.g. Science">
+                        <button class="search-button" id="search-button">Search</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Preferences Section placed below the header -->
+    <aside class="preference-header">
+        <h3>Preferences</h3>
+        <ul>
+            <li><a href="#" onClick="onNavItemClick('Business')">Business</a></li>
+            <li><a href="#" onClick="onNavItemClick('Crime')">Crime</a></li>
+            <li><a href="#" onClick="onNavItemClick('Domestic')">Domestic</a></li>
+            <li><a href="#" onClick="onNavItemClick('Education')">Education</a></li>
+            <li><a href="#" onClick="onNavItemClick('Entertainment')">Entertainment</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="cards-container container flex" id="cardscontainer">
+            <!-- News cards will dynamically populate here -->
+        </div>
+    </main>
+
+    <template id="template-news-card">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="" id="news-img">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">This is the Title</h3>
+                <h6 class="news-source" id="news-source">constGenius 02/02/2024</h6>
+                <p class="news-desc" id="news-desc">News app</p>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        // Simple JavaScript function to handle preference selection
+        function onNavItemClick(category) {
+            console.log(`Category selected: ${category}`);
+            // Add logic for fetching and displaying news based on the category
+        }
+    </script>
+</body>
+
+</html>

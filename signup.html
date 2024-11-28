@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="signinscript1.js" ></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .signup-container h1 {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .input-container {
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: #6c757d;
+            outline: none;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        .signup-button {
+            background: #6c757d;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .signup-button:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .link {
+            color: #6c757d;
+            text-decoration: none;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .news-ticker {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: #333;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 14px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .news-ticker span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 15s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="news-ticker">
+        <span>Your Personalized News Aggregator</span>
+    </div>
+    <div class="signup-container">
+        <h1>Signup</h1>
+        <div class="input-container">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" class="input-field" placeholder="Name" required>
+        </div>
+        <div class="input-container">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" class="input-field" placeholder="Email" required>
+        </div>
+        <div class="input-container">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" class="input-field" placeholder="Password" required>
+        </div>
+        <button class="signup-button">Signup</button>
+        <a href="login.html" class="link">Already have an account? Log in here</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.signup-button').addEventListener('click', function () {
+                const name = document.querySelector('input[placeholder="Name"]').value;
+                const email = document.querySelector('input[placeholder="Email"]').value;
+                const password = document.querySelector('input[placeholder="Password"]').value;
+
+                if (name && email && password) {
+                    const newUser = { name, email, password };
+
+                    // Save the new user data in session storage temporarily
+                    sessionStorage.setItem('newUserData', JSON.stringify(newUser));
+
+                    // Redirect to the login page with a success flag
+                    window.location.href = 'login.html?signupSuccess=true';
+                } else {
+                    alert('Please fill out all fields.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
